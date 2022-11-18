@@ -24,8 +24,12 @@ export const signInSchema = joi.object({
 export const signUpSchema = joi.object({
 	username: joi.string().required().min(3),
 	password: joi.string().required().min(6),
-	repeat_password: joi.ref('password'),
-	email: joi.string().required(),
+	repeatPassword: joi
+		.any()
+		.equal(joi.ref('password'))
+		.required()
+		.messages({ 'any.only': '{{#label}} does not match' }),
+	email: joi.string().email().required(),
 });
 
 const portAddress = 5000;
