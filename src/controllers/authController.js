@@ -50,7 +50,7 @@ export async function signIn(req, res) {
 			});
 			delete user.encryptedPassword;
 
-			res.send({ username: user.username, token });
+			res.send({ username: user.username, token, userId: user._id });
 		} else {
 			res.status(422).send({ message: 'senha incorreta' });
 		}
