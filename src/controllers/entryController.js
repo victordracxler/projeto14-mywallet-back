@@ -20,3 +20,18 @@ export async function newEntry(req, res) {
 		res.sendStatus(500);
 	}
 }
+
+export async function getEntries(req, res) {
+	const user = res.locals.user;
+	console.log(user._id);
+
+	try {
+		const entries = await entriesCollection
+			.find({ userId: user._id })
+			.toArray();
+		res.send(entries);
+	} catch (err) {
+		console.log(err);
+		res.sendStatus(500);
+	}
+}
