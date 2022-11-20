@@ -17,7 +17,6 @@ export async function signUp(req, res) {
 
 		await usersCollection.insertOne(user);
 
-		console.log(user);
 		res.sendStatus(200);
 	} catch (err) {
 		console.log(err);
@@ -30,7 +29,6 @@ export async function signIn(req, res) {
 
 	try {
 		const user = await usersCollection.findOne({ email });
-		console.log(user);
 
 		if (user && bcrypt.compareSync(password, user.encryptedPassword)) {
 			const token = uuidV4();

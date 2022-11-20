@@ -23,7 +23,6 @@ export async function newEntry(req, res) {
 
 export async function getEntries(req, res) {
 	const user = res.locals.user;
-	console.log(user._id);
 
 	try {
 		const entries = await entriesCollection
