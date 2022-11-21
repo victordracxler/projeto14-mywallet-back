@@ -41,7 +41,7 @@ export const entrySchema = joi.object({
 	type: joi.string().valid('in', 'out').required(),
 });
 
-const portAddress = 5000;
-app.listen(process.env.PORT, () =>
-	console.log('Server running in port' + process.env.PORT)
+const portAddress = process.env.PORT || 5000;
+app.listen(portAddress, () =>
+	console.log('Server running in port' + portAddress)
 );
