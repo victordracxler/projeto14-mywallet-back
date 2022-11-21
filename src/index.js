@@ -42,6 +42,6 @@ export const entrySchema = joi.object({
 });
 
 const portAddress = 5000;
-app.listen(portAddress, () =>
-	console.log(`Server running in port ${portAddress}`)
+app.listen(process.env.PORT, () =>
+	console.log('Server running in port' + process.env.PORT)
 );
